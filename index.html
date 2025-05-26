@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<head>
+  <title>Safety Zone</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="{% static 'firstapp/css/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    .dark {
+            background-color: #00313b; /* Темный фон */
+            color: #cbd5e1; /* Светлый текст */
+    }
+    .dark .text-navbar {
+            color: white; /* Темный фон для меню */
+    }
+
+  </style>
+</head>
+
+
+<body class="body-ind" id="theme">
+  {% include "firstapp/navbar.html" %}
+
+
+  <div>
+    <div class="main-back-logo">
+      <img src="{% static 'firstapp/images/tumannyj-gorod-utrom.jpg' %}" class="mainer-ing"></img>
+      <div class="text-mainer-ing-one">Когда безопасность особенно необходима</div>
+      <div class="text-mainer-ing-two">When safety is most needed</div>
+      <div class="text-mainer-ing-three">Quand la sécurité est la plus nécessaire</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="royal-mainding">Для кого актуально</div>
+    <div class="royal-saidimg">
+
+      <div>
+        <img src="{% static 'firstapp/images/safe-ic.png' %}" class="saidimg-ing"></img>
+        <div class="saidtext-ing">Представителям гос.учреждений </div>
+      </div>
+
+      <div>
+        <img src="{% static 'firstapp/images/news-ic.png' %}" class="saidimg-ing"></img>
+        <div class="saidtext-ing">Новостным агентсвам</div>
+      </div>
+
+      <div>
+        <img src="{% static 'firstapp/images/training-ic.png' %}" class="saidimg-ing"></img>
+        <div class="saidtext-ing">Образование, учителям и студентам</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main-sait-rover">
+    <div class="col-2 left-index-col">
+      <div>
+        <div class="text-news-left-right">Последние новости</div>
+
+        {% for item in news %}
+        <div class="left-title-news-name">
+          <a class="title-text" href="{% url 'news_detail' item.id %}">{{ item.title }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-7 main-index-col">
+      <h4 class="news-main-text">Новости</h4>
+      <div class="news-list">
+        {% for item in news %}
+          <div class="news-card">
+
+            <a class="title-text" href="{% url 'news_detail' item.id %}">{{ item.title }}</a>
+
+            <div class="card-info-news">
+
+                <p class='col-10 info-text text-gray-900 dark:text-w-400' >{{ item.content|truncatewords:20 }}</p>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-2 right-index-col">
+      <div class="text-news-left-right">Главные статьи</div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="down-news">
+      <div class="down-news-up">Информационная безопасность</div>
+      <div class="down-news-down">это защищенность информации и
+      поддерживающей ее инфраструктуры от случайных или преднамеренных
+      воздействий естественного или искусственного характера, которые могут
+      нанести ущерб владельцам или пользователям информации.
+      Рассматривая информацию как товар можно сказать, что нанесение ущерба
+      информации в целом приводит к материальным затратам. Например,
+      раскрытие технологии изготовления оригинального продукта приведет к
+      появлению аналогичного продукта, но от другого производителя, и, как
+      следствие, владелец технологии, а может быть и автор, потеряют часть рынка
+      и т. д.
+      С другой стороны, рассматривая информацию как субъект управления
+      (технология производства, расписание движения транспорта и т. д.), можно
+      утверждать, что изменение ее может привести к катастрофическим
+      последствиям в объекте управления – производстве, транспорте и др.
+      Именно поэтому при определении понятия "информационная безопасность"
+      на первое место ставится защита информации от различных воздействий.
+      Поэтому под защитой информации понимается комплекс мероприятий,
+      направленных на обеспечение информационной безопасности.
+      Согласно ГОСТу 350922-96 защита информации - это деятельность,
+      направленная на предотвращение утечки защищаемой информации,
+      несанкционированных и непреднамеренных воздействий на защищаемую
+      информацию.
+      Решение проблемы информационной безопасности, как правило, начинается
+      с выявления субъектов информационных отношений и интересов этих
+      субъектов, связанных с использованием информационных систем. Это
+      обусловлено тем, что для разных категорий субъектов характер решаемых
+      задач может существенно различаться. Например, задачи решаемые
+      администратором локальной сети по обеспечению информационной
+      безопасности, в значительной степени отличаются от задач, решаемых
+      пользователем на домашнем компьютере, не связанном сетью.
+      Исходя из этого, отметим следующие важные выводы:
+       задачи по обеспечению информационной безопасности для разных
+      категорий субъектов могут существенно различаться;
+       информационная безопасность не сводится исключительно к защите от
+      несанкционированного доступа к информации – это принципиально
+      более широкое понятие</div>
+    </div>
+  </div>
+  <div class="col-12 footer-block">
+    <div>
+      <div>mail: docrennews@lobby.ru</div>
+      <div>tellegram: docrennews</div>
+      <div>Контактный номер поддержки: +555 3 000</div>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+
+</body>

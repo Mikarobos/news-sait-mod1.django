@@ -1,0 +1,38 @@
+{% load static %}
+<header class="header-navbar">
+  <div class="header-navbar-main">
+
+    <div class="col-3">
+
+      <a><img src="{% static 'firstapp/images/free-icon-nxs.png' %}" class="logo-top"></a>
+
+    </div>
+
+    <div class="col-9 div-navbar-menu">
+
+      <ul class="navbar-menu">
+        <li class="col-3">
+          <a href="{% url 'index' %}" class="text-navbar">Новости</a>
+        </li>
+        <li class="col-3">
+          <a href="#" class="text-navbar">Инструменты</a>
+          <div class="nav-drop">
+            <a href="{% url 'category_list' %}" class="text-navbar">Статьи</a>
+            <a href="{% url 'calculator_risk' %}" class="text-navbar">Инструменты</a>
+          </div>
+        </li>
+        <li class="col-3">
+          <a href="{% url 'login' %}" class="text-navbar ">Авторизация</a>
+        </li>
+
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    </script>
+</header>
